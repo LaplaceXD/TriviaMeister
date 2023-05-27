@@ -7,7 +7,7 @@ using TriviaMeister.Models;
 
 namespace TriviaMeister.Services
 {
-    class TriviaStore : IDataStore<Trivia>
+    public class TriviaStore : IDataStore<Trivia>
     {
         readonly List<Trivia> _trivias;
 

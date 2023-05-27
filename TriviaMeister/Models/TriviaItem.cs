@@ -2,7 +2,7 @@
 
 namespace TriviaMeister.Models
 {
-    class TriviaItem
+    public class TriviaItem
     {
         public string Id { get; set; } = Guid.NewGuid().ToString();
         public string Prompt { get; set; }

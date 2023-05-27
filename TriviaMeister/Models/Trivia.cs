@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace TriviaMeister.Models
 {
-    class Trivia
+    public class Trivia
     {
         public string Id { get; set; } = Guid.NewGuid().ToString();
         public string Title { get; set; }
