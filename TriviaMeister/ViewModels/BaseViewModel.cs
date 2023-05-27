@@ -10,6 +10,8 @@ namespace TriviaMeister.ViewModels
 {
     public class BaseViewModel : INotifyPropertyChanged
     {
+        public IDataStore<Trivia> TriviaStore => DependencyService.Get<IDataStore<Trivia>>();
+
         public IDataStore<Item> DataStore => DependencyService.Get<IDataStore<Item>>();
 
         bool isBusy = false;
@@ -43,11 +45,7 @@ namespace TriviaMeister.ViewModels
         public event PropertyChangedEventHandler PropertyChanged;
         protected void OnPropertyChanged([CallerMemberName] string propertyName = "")
         {
-            var changed = PropertyChanged;
-            if (changed == null)
-                return;
-
-            changed.Invoke(this, new PropertyChangedEventArgs(propertyName));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
         #endregion
     }
