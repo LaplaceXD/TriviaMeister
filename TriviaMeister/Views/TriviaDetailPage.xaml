@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TriviaMeister.Views.TriviaDetailPage"
+             xmlns:local="clr-namespace:TriviaMeister.ViewModels"
+             xmlns:model="clr-namespace:TriviaMeister.Models"
+             Title="{Binding PageTitle}">
+
+    <StackLayout Spacing="20" Padding="12">
+        <Label Text="{Binding Title}" FontSize="24" FontAttributes="Bold" Margin="0,0,0,-12"/>
+        <Label Text="{Binding Description}" FontSize="Small" Margin="0,0,0,12"/>
+
+        <Label Text="Questions" FontSize="16" FontAttributes="Bold" Margin="0,0,0,-16" />
+        <Label LineBreakMode="NoWrap"
+            FontSize="13"
+            Margin="0,0,0,-16">
+            <Label.FormattedText>
+                <FormattedString>
+                    <Span Text="Total Items: " />
+                    <Span Text="{Binding Items.Count}" FontAttributes="Bold" />
+                </FormattedString>
+            </Label.FormattedText>
+        </Label>
+        
+        <!-- Convert this into a refresh view -->
+        <ListView x:Name="ItemsListView"
+                ItemsSource="{Binding Items}"
+                SelectionMode="None"
+                SeparatorVisibility="None"
+                HasUnevenRows="True">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Frame
+                            CornerRadius="5"
+                            HasShadow="True"
+                            Margin="4">
+                            <StackLayout x:DataType="model:TriviaItem" Orientation="Horizontal">
+                                <Label Text="1"
+                                    FontSize="16"
+                                    FontAttributes="Bold" />
+                                <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
+                                    <Label Text="{Binding Prompt}" 
+                                        FontSize="16"
+                                        FontAttributes="Bold" />
+                                    <Label Text="{Binding Answer}" 
+                                        FontSize="13" />
+                                    <Label LineBreakMode="NoWrap"
+                                        FontSize="13">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="Case-Sensitive Answer? " />
+                                                <Span Text="{Binding CaseSensitive}" FontAttributes="Bold" />
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                </StackLayout>
+                                
+                                <!-- Update to Trivia Question Detail -->
+                                <StackLayout.GestureRecognizers>
+                                    <TapGestureRecognizer 
+                                        NumberOfTapsRequired="1"
+                                        Command="{Binding Source={RelativeSource AncestorType={x:Type local:TriviasViewModel}}, Path=TriviaTapped}"		
+                                        CommandParameter="{Binding .}">
+                                    </TapGestureRecognizer>
+                                </StackLayout.GestureRecognizers>
+                            </StackLayout>
+                        </Frame>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+</ContentPage>

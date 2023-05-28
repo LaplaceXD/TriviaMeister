@@ -76,8 +76,7 @@ namespace TriviaMeister.ViewModels
         {
             if (trivia == null) return;
             // This will push the ItemDetailPage onto the navigation stack
-            await Shell.Current.GoToAsync($"{nameof(ItemDetailPage)}?{nameof(ItemDetailViewModel.ItemId)}={trivia.Id}");
+            await Shell.Current.GoToAsync($"{nameof(TriviaDetailPage)}?{nameof(TriviaDetailViewModel.TriviaId)}={trivia.Id}");
         }
-
     }
 }
