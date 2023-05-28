@@ -14,18 +14,18 @@ namespace TriviaMeister.ViewModels
 
         public IDataStore<Item> DataStore => DependencyService.Get<IDataStore<Item>>();
 
-        bool isBusy = false;
+        private bool _isBusy = false;
         public bool IsBusy
         {
-            get { return isBusy; }
-            set { SetProperty(ref isBusy, value); }
+            get { return _isBusy; }
+            set { SetProperty(ref _isBusy, value); }
         }
 
-        string title = string.Empty;
-        public string Title
+        private string _pageTitle = string.Empty;
+        public string PageTitle
         {
-            get { return title; }
-            set { SetProperty(ref title, value); }
+            get { return _pageTitle; }
+            set { SetProperty(ref _pageTitle, value); }
         }
 
         protected bool SetProperty<T>(ref T backingStore, T value,

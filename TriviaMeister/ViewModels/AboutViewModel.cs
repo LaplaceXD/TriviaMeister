@@ -9,7 +9,7 @@ namespace TriviaMeister.ViewModels
     {
         public AboutViewModel()
         {
-            Title = "About";
+            PageTitle = "About";
             OpenWebCommand = new Command(async () => await Browser.OpenAsync("https://aka.ms/xamarin-quickstart"));
         }
 

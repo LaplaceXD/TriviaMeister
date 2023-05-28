@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TriviaMeister.Views.TriviasPage"
-             Title="{Binding Title}"
+             Title="{Binding PageTitle}"
              xmlns:local="clr-namespace:TriviaMeister.ViewModels"
              xmlns:model="clr-namespace:TriviaMeister.Models"
              x:Name="BrowseItemsPage">

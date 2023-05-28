@@ -19,7 +19,7 @@ namespace TriviaMeister.ViewModels
 
         public TriviasViewModel()
         {
-            Title = "Browse";
+            PageTitle = "Browse";
             Trivias = new ObservableCollection<Trivia>();
             LoadTriviasCommand = new Command(async () => await OnTriviasLoad());
 
