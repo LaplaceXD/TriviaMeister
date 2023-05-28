@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TriviaMeister.Views.TriviasPage"
+             Title="{Binding Title}"
+             xmlns:local="clr-namespace:TriviaMeister.ViewModels"
+             xmlns:model="clr-namespace:TriviaMeister.Models"
+             x:Name="BrowseItemsPage">
+    
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Add" Command="{Binding AddTriviaCommand}" />
+    </ContentPage.ToolbarItems>
+
+    <RefreshView x:DataType="local:TriviasViewModel" Command="{Binding LoadTriviasCommand}" IsRefreshing="{Binding IsBusy, Mode=TwoWay}">
+        <ListView x:Name="ItemsListView"
+                ItemsSource="{Binding Trivias}"
+                SelectionMode="None"
+                SeparatorVisibility="None"
+                HasUnevenRows="True">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Frame
+                            CornerRadius="5"
+                            HasShadow="True"
+                            Margin="8,4">
+                            <StackLayout x:DataType="model:Trivia" Orientation="Horizontal">
+                                <StackLayout Orientation="Vertical" HorizontalOptions="StartAndExpand">
+                                    <Label Text="{Binding Title}" 
+                                        LineBreakMode="NoWrap"
+                                        FontSize="16"
+                                        FontAttributes="Bold" />
+                                    <Label Text="{Binding Description}" 
+                                        LineBreakMode="NoWrap"
+                                        FontSize="13" />
+                                </StackLayout>
+                                <StackLayout Orientation="Vertical">
+                                    <Label Text="{Binding Items.Count}"
+                                        HorizontalOptions="Center" 
+                                        VerticalOptions="Center"
+                                        Margin="0,0,0,-12"
+                                        FontSize="24"
+                                        FontAttributes="Bold" />
+                                    <Label Text="Items" 
+                                            FontSize="13" />
+                                </StackLayout>
+                            
+                                <StackLayout.GestureRecognizers>
+                                    <TapGestureRecognizer 
+                                        NumberOfTapsRequired="1"
+                                        Command="{Binding Source={RelativeSource AncestorType={x:Type local:TriviasViewModel}}, Path=TriviaTapped}"		
+                                        CommandParameter="{Binding .}">
+                                    </TapGestureRecognizer>
+                                </StackLayout.GestureRecognizers>
+                            </StackLayout>
+                        </Frame>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </RefreshView>
+</ContentPage>
