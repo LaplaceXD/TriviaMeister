@@ -20,22 +20,22 @@
         </ResourceDictionary>
     </TabbedPage.Resources>
 
-    <NavigationPage Title="Create">
-        <x:Arguments>
-            <local:NewTriviaPage />
-        </x:Arguments>
-    </NavigationPage>
-
-    <NavigationPage Title="Browse" IconImageSource="icon_feed.png">
-        <x:Arguments>
-            <local:TriviasPage />
-        </x:Arguments>
-    </NavigationPage>
-
-    <NavigationPage Title="About" IconImageSource="icon_about.png">
-        <x:Arguments>
-            <local:AboutPage />
-        </x:Arguments>
-    </NavigationPage>
-
+    <TabbedPage.Children>
+        <NavigationPage Title="Create">
+            <x:Arguments>
+                <local:NewTriviaPage />
+            </x:Arguments>
+        </NavigationPage>
+        <NavigationPage Title="Browse" IconImageSource="icon_feed.png">
+            <x:Arguments>
+                <local:TriviasPage />
+            </x:Arguments>
+        </NavigationPage>
+        <NavigationPage Title="About" IconImageSource="icon_about.png">
+            <x:Arguments>
+                <local:AboutPage />
+            </x:Arguments>
+        </NavigationPage>
+    </TabbedPage.Children>
+    
 </TabbedPage>
