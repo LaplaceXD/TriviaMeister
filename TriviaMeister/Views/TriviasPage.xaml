@@ -20,8 +20,13 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
-                        <Frame Margin="16,4">
-                            <StackLayout x:DataType="model:Trivia" Orientation="Horizontal">
+                        <Frame Margin="16,4" x:DataType="model:Trivia">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+
                                 <StackLayout Orientation="Vertical" HorizontalOptions="StartAndExpand">
                                     <Label Text="{Binding Title}"
                                            FontSize="16"
@@ -33,7 +38,7 @@
                                            LineBreakMode="NoWrap"
                                            TextColor="{StaticResource PrimaryColor}" />
                                 </StackLayout>
-                                <StackLayout Orientation="Vertical">
+                                <StackLayout Orientation="Vertical" Grid.Column="1">
                                     <Label Text="{Binding Items.Count}"
                                            HorizontalOptions="Center" 
                                            VerticalOptions="Center"
@@ -44,15 +49,15 @@
                                            FontSize="13"
                                            TextColor="{StaticResource PrimaryColor}" />
                                 </StackLayout>
-
-                                <StackLayout.GestureRecognizers>
-                                    <TapGestureRecognizer 
+                            </Grid>
+                            
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer 
                                         NumberOfTapsRequired="1"
                                         Command="{Binding Source={RelativeSource AncestorType={x:Type local:TriviasViewModel}}, Path=TriviaTapped}"		
                                         CommandParameter="{Binding .}">
-                                    </TapGestureRecognizer>
-                                </StackLayout.GestureRecognizers>
-                            </StackLayout>
+                                </TapGestureRecognizer>
+                            </Frame.GestureRecognizers>
                         </Frame>
                     </ViewCell>
                 </DataTemplate>

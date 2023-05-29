@@ -28,20 +28,20 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
-                        <Frame Margin="4">
-                            <StackLayout x:DataType="model:TriviaItem" Orientation="Horizontal">
+                        <Frame Margin="4" x:DataType="model:TriviaItem">
+                            <StackLayout Orientation="Horizontal">
                                 <Label Text="1" FontSize="18" Style="{StaticResource SubtitleLabel}" TextColor="{StaticResource PrimaryColor}" />
                                 <Label Text="{Binding Prompt}" FontSize="16" TextColor="{StaticResource PrimaryColor}" />
+                            </StackLayout>
 
-                                <!-- Update to Trivia Question Detail -->
-                                <StackLayout.GestureRecognizers>
-                                    <TapGestureRecognizer 
+                            <!-- Update to Trivia Question Detail -->
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer 
                                         NumberOfTapsRequired="1"
                                         Command="{Binding Source={RelativeSource AncestorType={x:Type local:TriviasViewModel}}, Path=TriviaTapped}"		
                                         CommandParameter="{Binding .}">
-                                    </TapGestureRecognizer>
-                                </StackLayout.GestureRecognizers>
-                            </StackLayout>
+                                </TapGestureRecognizer>
+                            </Frame.GestureRecognizers>
                         </Frame>
                     </ViewCell>
                 </DataTemplate>
