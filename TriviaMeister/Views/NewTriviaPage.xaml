@@ -4,7 +4,6 @@
              xmlns:local="clr-namespace:TriviaMeister.ViewModels"
              x:Class="TriviaMeister.Views.NewTriviaPage"
              x:DataType="local:NewTriviaViewModel"
-             Shell.PresentationMode="ModalAnimated"
              Title="{Binding PageTitle}">
     <ContentPage.Content>
         <StackLayout Spacing="3" Padding="15">

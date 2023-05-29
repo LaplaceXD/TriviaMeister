@@ -7,10 +7,19 @@ namespace TriviaMeister.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class TriviaDetailPage : ContentPage
 	{
+		public string TriviaId { get; set; }
 		public TriviaDetailPage()
 		{
 			InitializeComponent();
-			BindingContext = new TriviaDetailViewModel();
 		}
-	}
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            BindingContext = new TriviaDetailViewModel()
+            {
+                TriviaId = TriviaId
+            };
+        }
+    }
 }

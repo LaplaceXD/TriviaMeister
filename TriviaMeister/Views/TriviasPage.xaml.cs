@@ -9,11 +9,14 @@ namespace TriviaMeister.Views
 	{
 		readonly TriviasViewModel _viewModel;
 
-		public TriviasPage ()
+		public TriviasPage()
 		{
-			InitializeComponent ();
+			InitializeComponent();
 
-			BindingContext = _viewModel = new TriviasViewModel();
+			BindingContext = _viewModel = new TriviasViewModel()
+			{
+				Navigation = Navigation
+			};
 		}
 
         protected override void OnAppearing()

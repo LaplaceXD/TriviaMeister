@@ -6,14 +6,19 @@ using Xamarin.Forms;
 
 namespace TriviaMeister.ViewModels
 {
-    [QueryProperty(nameof(TriviaId), nameof(TriviaId))]
     public class TriviaDetailViewModel : BaseViewModel
     {
+        private string _id;
         private string _triviaId;
         private string _title;
         private string _description;
         private List<TriviaItem> _items;
-        public string Id { get; set; }
+        
+        public string Id 
+        { 
+            get => _id; 
+            set => SetProperty(ref _id, value); 
+        }
 
         public string Title
         {
@@ -50,6 +55,7 @@ namespace TriviaMeister.ViewModels
         {
             try
             {
+                Debug.WriteLine(triviaId);
                 var trivia = await TriviaStore.GetItemAsync(triviaId);
                 Id = trivia.Id;
                 Title = trivia.Title;

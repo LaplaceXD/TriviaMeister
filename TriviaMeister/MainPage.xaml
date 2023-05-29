@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms" 
+       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+       xmlns:local="clr-namespace:TriviaMeister.Views"
+       xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
+       x:Class="TriviaMeister.MainPage"
+       Title="TriviaMeister"
+       Style="{StaticResource BaseStyle}">
+
+    <android:TabbedPage.ToolbarPlacement>Bottom</android:TabbedPage.ToolbarPlacement>
+    
+    <TabbedPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="BaseStyle" TargetType="TabbedPage">
+                <Setter Property="BackgroundColor" Value="WhiteSmoke" />
+                <Setter Property="BarBackgroundColor" Value="{StaticResource Primary}" />
+                <Setter Property="SelectedTabColor" Value="#B4FFFFFF" />
+                <Setter Property="UnselectedTabColor" Value="#95FFFFFF"/>
+            </Style>
+        </ResourceDictionary>
+    </TabbedPage.Resources>
+    
+    <NavigationPage Title="Browse" IconImageSource="icon_feed.png">
+        <x:Arguments>
+            <local:TriviasPage />
+        </x:Arguments>
+    </NavigationPage>
+    
+    <NavigationPage Title="About" IconImageSource="icon_about.png">
+        <x:Arguments>
+            <local:AboutPage />
+        </x:Arguments>
+    </NavigationPage>
+
+</TabbedPage>

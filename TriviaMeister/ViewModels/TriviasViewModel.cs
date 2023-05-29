@@ -16,6 +16,15 @@ namespace TriviaMeister.ViewModels
         public Command LoadTriviasCommand { get; }
         public Command AddTriviaCommand { get; }
         public Command<Trivia> TriviaTapped { get; }
+        public Trivia SelectedTrivia
+        {
+            get => _selectedTrivia;
+            set
+            {
+                SetProperty(ref _selectedTrivia, value);
+                OnTriviaSelected(value);
+            }
+        }
 
         public TriviasViewModel()
         {
@@ -57,26 +66,19 @@ namespace TriviaMeister.ViewModels
             SelectedTrivia = null;
         }
 
-        public Trivia SelectedTrivia
-        {
-            get => _selectedTrivia;
-            set
-            {
-                SetProperty(ref _selectedTrivia, value);
-                OnTriviaSelected(value);
-            }
-        }
-
         private async void OnTriviaAdd(object obj)
         {
-            await Shell.Current.GoToAsync(nameof(NewTriviaPage));
+            await Navigation.PushAsync(new NewTriviaPage());
         }
 
         async void OnTriviaSelected(Trivia trivia)
         {
             if (trivia == null) return;
-            // This will push the ItemDetailPage onto the navigation stack
-            await Shell.Current.GoToAsync($"{nameof(TriviaDetailPage)}?{nameof(TriviaDetailViewModel.TriviaId)}={trivia.Id}");
+            
+            await Navigation.PushAsync(new TriviaDetailPage()
+            {
+                TriviaId = trivia.Id
+            });
         }
     }
 }

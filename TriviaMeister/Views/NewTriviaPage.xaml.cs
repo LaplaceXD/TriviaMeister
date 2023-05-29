@@ -10,7 +10,10 @@ namespace TriviaMeister.Views
         public NewTriviaPage()
         {
             InitializeComponent();
-            BindingContext = new NewTriviaViewModel();
+            BindingContext = new NewTriviaViewModel() 
+            {
+                Navigation = Navigation 
+            };
         }
     }
 }

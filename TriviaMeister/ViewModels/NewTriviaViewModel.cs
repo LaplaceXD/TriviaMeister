@@ -49,8 +49,7 @@ namespace TriviaMeister.ViewModels
 
         private async void OnCancel()
         {
-            // This will pop the current page off the navigation stack
-            await Shell.Current.GoToAsync("..");
+            await Navigation.PopAsync();
         }
 
         private async void OnSave()
@@ -62,8 +61,7 @@ namespace TriviaMeister.ViewModels
                 Items = Items
             });
 
-            // This will pop the current page off the navigation stack
-            await Shell.Current.GoToAsync("..");
+            await Navigation.PopAsync();
         }
     }
 }

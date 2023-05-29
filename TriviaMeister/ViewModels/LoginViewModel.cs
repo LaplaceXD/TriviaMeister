@@ -17,8 +17,8 @@ namespace TriviaMeister.ViewModels
 
         private async void OnLoginClicked(object obj)
         {
-            // Prefixing with `//` switches to a different navigation stack instead of pushing to the active one
-            await Shell.Current.GoToAsync($"//{nameof(AboutPage)}");
+            // Fix this code to push to a new stack, instead of using the current navigation stack
+            await Navigation.PushAsync(new AboutPage());
         }
     }
 }

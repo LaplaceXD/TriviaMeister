@@ -26,6 +26,13 @@ namespace TriviaMeister.ViewModels
             set { SetProperty(ref _pageTitle, value); }
         }
 
+        private INavigation _navigation;
+        public INavigation Navigation
+        {
+            get { return _navigation; }
+            set { _navigation = value; }
+        }
+
         protected bool SetProperty<T>(ref T backingStore, T value,
             [CallerMemberName] string propertyName = "",
             Action onChanged = null)

@@ -1,32 +1,16 @@
-﻿using System;
-using TriviaMeister.Services;
-using TriviaMeister.Views;
+﻿using TriviaMeister.Services;
 using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
 
 namespace TriviaMeister
 {
     public partial class App : Application
     {
-
         public App()
         {
             InitializeComponent();
 
             DependencyService.Register<TriviaStore>();
-            MainPage = new AppShell();
-        }
-
-        protected override void OnStart()
-        {
-        }
-
-        protected override void OnSleep()
-        {
-        }
-
-        protected override void OnResume()
-        {
+            MainPage = new MainPage();
         }
     }
 }
