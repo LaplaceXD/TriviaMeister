@@ -7,10 +7,6 @@
              x:DataType="local:TriviasViewModel"
              x:Name="BrowseTriviasPage"
              Title="{Binding PageTitle}">
-    
-    <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Add" Command="{Binding AddTriviaCommand}" />
-    </ContentPage.ToolbarItems>
 
     <RefreshView Command="{Binding LoadTriviasCommand}" IsRefreshing="{Binding IsBusy, Mode=TwoWay}">
         <ListView x:Name="TriviasListView"

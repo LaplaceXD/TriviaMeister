@@ -5,7 +5,8 @@
        xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
        x:Class="TriviaMeister.MainPage"
        Title="TriviaMeister"
-       Style="{StaticResource BaseStyle}">
+       Style="{StaticResource BaseStyle}"
+       CurrentPage="{x:Reference FirstPage}">
 
     <android:TabbedPage.ToolbarPlacement>Bottom</android:TabbedPage.ToolbarPlacement>
     
@@ -25,7 +26,9 @@
             <local:TriviasPage />
         </x:Arguments>
     </NavigationPage>
-    
+
+    <local:NewTriviaPage x:Name="FirstPage" Title="Create Trivia" />
+
     <NavigationPage Title="About" IconImageSource="icon_about.png">
         <x:Arguments>
             <local:AboutPage />

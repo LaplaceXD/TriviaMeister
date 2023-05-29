@@ -14,7 +14,6 @@ namespace TriviaMeister.ViewModels
 
         public ObservableCollection<Trivia> Trivias { get; }
         public Command LoadTriviasCommand { get; }
-        public Command AddTriviaCommand { get; }
         public Command<Trivia> TriviaTapped { get; }
         public Trivia SelectedTrivia
         {
@@ -30,11 +29,9 @@ namespace TriviaMeister.ViewModels
         {
             PageTitle = "Browse";
             Trivias = new ObservableCollection<Trivia>();
+
             LoadTriviasCommand = new Command(async () => await OnTriviasLoad());
-
             TriviaTapped = new Command<Trivia>(OnTriviaSelected);
-
-            AddTriviaCommand = new Command(OnTriviaAdd);
         }
 
         async Task OnTriviasLoad()
@@ -64,11 +61,6 @@ namespace TriviaMeister.ViewModels
         {
             IsBusy = true;
             SelectedTrivia = null;
-        }
-
-        private async void OnTriviaAdd(object obj)
-        {
-            await Navigation.PushAsync(new NewTriviaPage());
         }
 
         async void OnTriviaSelected(Trivia trivia)

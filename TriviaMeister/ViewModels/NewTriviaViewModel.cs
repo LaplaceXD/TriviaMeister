@@ -9,7 +9,7 @@ namespace TriviaMeister.ViewModels
     {
         private string _title;
         private string _description;
-        private List<TriviaItem> _items;
+        private List<TriviaItem> _items = new List<TriviaItem>();
 
         public string Title
         {
@@ -37,19 +37,20 @@ namespace TriviaMeister.ViewModels
             PageTitle = "Create Trivia";
 
             SaveCommand = new Command(OnSave, ValidateSave);
-            CancelCommand = new Command(OnCancel);
             this.PropertyChanged += (_, __) => SaveCommand.ChangeCanExecute();
         }
 
         private bool ValidateSave()
         {
-            return !String.IsNullOrWhiteSpace(_title)
-                && !String.IsNullOrWhiteSpace(_description);
+            return !string.IsNullOrWhiteSpace(_title)
+                && !string.IsNullOrWhiteSpace(_description);
         }
 
-        private async void OnCancel()
+        private void Reset()
         {
-            await Navigation.PopAsync();
+            Title = string.Empty;
+            Description = string.Empty;
+            Items = new List<TriviaItem>();
         }
 
         private async void OnSave()
@@ -61,7 +62,7 @@ namespace TriviaMeister.ViewModels
                 Items = Items
             });
 
-            await Navigation.PopAsync();
+            Reset();
         }
     }
 }
