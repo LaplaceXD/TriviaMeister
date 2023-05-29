@@ -59,6 +59,7 @@
     <PackageReference Include="Xamarin.Essentials" Version="1.7.0" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AndroidPlainEntryEffect.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -102,7 +103,7 @@
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <ProjectExtensions>
     <VisualStudio>
-      <UserProperties XamarinHotReloadDebuggerTimeoutExceptionTriviaMeisterAndroidHideInfoBar="True" XamarinHotReloadUnhandledDeviceExceptionTriviaMeisterAndroidHideInfoBar="True" />
+      <UserProperties XamarinHotReloadUnhandledDeviceExceptionTriviaMeisterAndroidHideInfoBar="True" XamarinHotReloadDebuggerTimeoutExceptionTriviaMeisterAndroidHideInfoBar="True" />
     </VisualStudio>
   </ProjectExtensions>
 </Project>
