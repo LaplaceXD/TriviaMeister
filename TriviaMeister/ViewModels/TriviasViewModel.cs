@@ -69,7 +69,7 @@ namespace TriviaMeister.ViewModels
 
         private async void OnTriviaAdd(object obj)
         {
-            await Shell.Current.GoToAsync(nameof(NewItemPage));
+            await Shell.Current.GoToAsync(nameof(NewTriviaPage));
         }
 
         async void OnTriviaSelected(Trivia trivia)

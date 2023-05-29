@@ -9,7 +9,7 @@ namespace TriviaMeister
         {
             InitializeComponent();
             Routing.RegisterRoute(nameof(TriviaDetailPage), typeof(TriviaDetailPage));
-            Routing.RegisterRoute(nameof(NewItemPage), typeof(NewItemPage));
+            Routing.RegisterRoute(nameof(NewTriviaPage), typeof(NewTriviaPage));
         }
 
     }
