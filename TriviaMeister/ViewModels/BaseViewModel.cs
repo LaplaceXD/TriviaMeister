@@ -12,8 +12,6 @@ namespace TriviaMeister.ViewModels
     {
         public IDataStore<Trivia> TriviaStore => DependencyService.Get<IDataStore<Trivia>>();
 
-        public IDataStore<Item> DataStore => DependencyService.Get<IDataStore<Item>>();
-
         private bool _isBusy = false;
         public bool IsBusy
         {

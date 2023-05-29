@@ -14,7 +14,6 @@ namespace TriviaMeister
             InitializeComponent();
 
             DependencyService.Register<TriviaStore>();
-            DependencyService.Register<MockDataStore>();
             MainPage = new AppShell();
         }
 
