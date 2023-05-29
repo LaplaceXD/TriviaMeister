@@ -8,40 +8,43 @@
              x:Name="BrowseTriviasPage"
              Title="{Binding PageTitle}">
 
+    <NavigationPage.TitleView>
+        <StackLayout>
+            <Label Text="{Binding PageTitle}"  Style="{StaticResource TitleLabel}" />
+        </StackLayout>
+    </NavigationPage.TitleView>
+    
     <RefreshView Command="{Binding LoadTriviasCommand}" IsRefreshing="{Binding IsBusy, Mode=TwoWay}">
         <ListView x:Name="TriviasListView"
-                ItemsSource="{Binding Trivias}"
-                SelectionMode="None"
-                SeparatorVisibility="None"
-                HasUnevenRows="True">
+                  ItemsSource="{Binding Trivias}">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
-                        <Frame
-                            CornerRadius="5"
-                            HasShadow="True"
-                            Margin="8,4">
+                        <Frame Margin="16,4">
                             <StackLayout x:DataType="model:Trivia" Orientation="Horizontal">
                                 <StackLayout Orientation="Vertical" HorizontalOptions="StartAndExpand">
-                                    <Label Text="{Binding Title}" 
-                                        LineBreakMode="NoWrap"
-                                        FontSize="16"
-                                        FontAttributes="Bold" />
+                                    <Label Text="{Binding Title}"
+                                           FontSize="16"
+                                           LineBreakMode="NoWrap"
+                                           Margin="0,0,0,-4"
+                                           Style="{StaticResource SubtitleLabel}"
+                                           TextColor="{StaticResource PrimaryColor}" />
                                     <Label Text="{Binding Description}" 
-                                        LineBreakMode="NoWrap"
-                                        FontSize="13" />
+                                           LineBreakMode="NoWrap"
+                                           TextColor="{StaticResource PrimaryColor}" />
                                 </StackLayout>
                                 <StackLayout Orientation="Vertical">
                                     <Label Text="{Binding Items.Count}"
-                                        HorizontalOptions="Center" 
-                                        VerticalOptions="Center"
-                                        Margin="0,0,0,-12"
-                                        FontSize="24"
-                                        FontAttributes="Bold" />
+                                           HorizontalOptions="Center" 
+                                           VerticalOptions="Center"
+                                           Margin="0,0,0,-8"
+                                           Style="{StaticResource SubtitleLabel}"
+                                           TextColor="{StaticResource PrimaryColor}" />
                                     <Label Text="Items" 
-                                            FontSize="13" />
+                                           FontSize="13"
+                                           TextColor="{StaticResource PrimaryColor}" />
                                 </StackLayout>
-                            
+
                                 <StackLayout.GestureRecognizers>
                                     <TapGestureRecognizer 
                                         NumberOfTapsRequired="1"

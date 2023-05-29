@@ -2,16 +2,53 @@
 <Application xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TriviaMeister.App">
-    <!--
-        Define global resources and styles here, that apply to all pages in your app.
-    -->
+
     <Application.Resources>
         <ResourceDictionary>
             <Color x:Key="PrimaryColor">#353D61</Color>
             <Color x:Key="SecondaryColor">#FF6855</Color>
             <Color x:Key="AccentColor">#39C3E7</Color>
             <Color x:Key="TextColor">#EBE4D2</Color>
+
+            <!-- Global Label Style -->
+            <Style TargetType="Label">
+                <Setter Property="TextColor" Value="{StaticResource TextColor}"></Setter>
+                <Setter Property="FontFamily" Value="Overpass.ttf#Overpass.ttf"></Setter>
+                <Setter Property="FontSize" Value="Small"></Setter>
+            </Style>
+
+            <Style x:Key="TitleLabel" TargetType="Label">
+                <Setter Property="FontFamily" Value="Sansita-Black.ttf#Sansita-Black.ttf"></Setter>
+                <Setter Property="FontSize" Value="42"></Setter>
+                <Setter Property="Margin" Value="0,0,0,12"></Setter>
+            </Style>
+
+            <Style x:Key="SubtitleLabel" TargetType="Label">
+                <Setter Property="FontFamily" Value="Sansita-Bold.ttf#Sansita-Bold.ttf"></Setter>
+                <Setter Property="FontSize" Value="24"></Setter>
+                <Setter Property="Margin" Value="0,0,0,4"></Setter>
+            </Style>
+
+            <!-- Global Navigation Page Style -->
+            <Style TargetType="NavigationPage">
+                <Setter Property="BarBackgroundColor" Value="{StaticResource PrimaryColor}" />
+                <Setter Property="BarTextColor" Value="{StaticResource TextColor}" />
+            </Style>
             
+            <!-- Global ListView Style -->
+            <Style TargetType="ListView">
+                <Setter Property="SelectionMode" Value="None"></Setter>
+                <Setter Property="SeparatorVisibility" Value="None"></Setter>
+                <Setter Property="HasUnevenRows" Value="True"></Setter>
+            </Style>
+            
+            <!-- Global ListView Frame Style -->
+            <Style TargetType="Frame">
+                <Setter Property="CornerRadius" Value="8"></Setter>
+                <Setter Property="HasShadow" Value="True"></Setter>
+                <Setter Property="BackgroundColor" Value="{StaticResource TextColor}"></Setter>
+            </Style>
+
             <Style TargetType="Button">
                 <Setter Property="TextColor" Value="{StaticResource TextColor}"></Setter>
                 <Setter Property="VisualStateManager.VisualStateGroups">
@@ -19,12 +56,12 @@
                         <VisualStateGroup x:Name="CommonStates">
                             <VisualState x:Name="Normal">
                                 <VisualState.Setters>
-                                    <Setter Property="BackgroundColor" Value="{StaticResource PrimaryColor}" />
+                                    <Setter Property="BackgroundColor" Value="{StaticResource SecondaryColor}" />
                                 </VisualState.Setters>
                             </VisualState>
                             <VisualState x:Name="Disabled">
                                 <VisualState.Setters>
-                                    <Setter Property="BackgroundColor" Value="#332196F3" />
+                                    <Setter Property="BackgroundColor" Value="#332196FF" />
                                 </VisualState.Setters>
                             </VisualState>
                         </VisualStateGroup>
