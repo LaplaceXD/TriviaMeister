@@ -9,6 +9,8 @@
             <Color x:Key="SecondaryColor">#FF6855</Color>
             <Color x:Key="AccentColor">#39C3E7</Color>
             <Color x:Key="TextColor">#EBE4D2</Color>
+            <Color x:Key="MutedColor">#222530</Color>
+            <Color x:Key="WhiteColor">WhiteSmoke</Color>
 
             <!-- Global Label Style -->
             <Style TargetType="Label">
@@ -19,8 +21,7 @@
 
             <Style x:Key="TitleLabel" TargetType="Label">
                 <Setter Property="FontFamily" Value="Sansita-Black.ttf#Sansita-Black.ttf"></Setter>
-                <Setter Property="FontSize" Value="42"></Setter>
-                <Setter Property="Margin" Value="0,0,0,12"></Setter>
+                <Setter Property="FontSize" Value="36"></Setter>
             </Style>
 
             <Style x:Key="SubtitleLabel" TargetType="Label">
@@ -49,8 +50,49 @@
                 <Setter Property="BackgroundColor" Value="{StaticResource TextColor}"></Setter>
             </Style>
 
-            <Style TargetType="Button">
+            <!-- Global Entry Style -->
+            <Style TargetType="Entry">
+                <Setter Property="FontSize" Value="14"></Setter>
                 <Setter Property="TextColor" Value="{StaticResource TextColor}"></Setter>
+            </Style>
+
+            <Style TargetType="Editor">
+                <Setter Property="FontSize" Value="14"></Setter>
+                <Setter Property="TextColor" Value="{StaticResource TextColor}"></Setter>
+            </Style>
+
+            <Style x:Key="EntryWrapper" TargetType="Frame">
+                <Setter Property="BackgroundColor" Value="Transparent"></Setter>
+                <Setter Property="Padding" Value="12,4"></Setter>
+                <Setter Property="CornerRadius" Value="8"></Setter>
+                <Setter Property="BorderColor" Value="{StaticResource AccentColor}"></Setter>
+            </Style>
+            
+            <!-- Global Button Style -->
+            <Style TargetType="Button">
+                <Setter Property="CornerRadius" Value="8"></Setter>
+                <Setter Property="TextTransform" Value="None"></Setter>
+                <Setter Property="VisualStateManager.VisualStateGroups">
+                    <VisualStateGroupList>
+                        <VisualStateGroup x:Name="CommonStates">
+                            <VisualState x:Name="Normal">
+                                <VisualState.Setters>
+                                    <Setter Property="TextColor" Value="{StaticResource WhiteColor}"></Setter>
+                                    <Setter Property="BackgroundColor" Value="{StaticResource AccentColor}" />
+                                </VisualState.Setters>
+                            </VisualState>
+                            <VisualState x:Name="Disabled">
+                                <VisualState.Setters>
+                                    <Setter Property="TextColor" Value="{StaticResource TextColor}"></Setter>
+                                    <Setter Property="BackgroundColor" Value="{StaticResource MutedColor}" />
+                                </VisualState.Setters>
+                            </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateGroupList>
+                </Setter>
+            </Style>
+
+            <Style x:Key="SecondaryButton" TargetType="Button">
                 <Setter Property="VisualStateManager.VisualStateGroups">
                     <VisualStateGroupList>
                         <VisualStateGroup x:Name="CommonStates">
@@ -59,15 +101,11 @@
                                     <Setter Property="BackgroundColor" Value="{StaticResource SecondaryColor}" />
                                 </VisualState.Setters>
                             </VisualState>
-                            <VisualState x:Name="Disabled">
-                                <VisualState.Setters>
-                                    <Setter Property="BackgroundColor" Value="#332196FF" />
-                                </VisualState.Setters>
-                            </VisualState>
                         </VisualStateGroup>
                     </VisualStateGroupList>
                 </Setter>
             </Style>
+            
         </ResourceDictionary>        
     </Application.Resources>
 </Application>

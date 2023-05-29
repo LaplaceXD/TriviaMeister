@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:effects="clr-namespace:TriviaMeister.Effects"
              xmlns:local="clr-namespace:TriviaMeister.ViewModels"
              x:Class="TriviaMeister.Views.NewTriviaPage"
              x:DataType="local:NewTriviaViewModel"
@@ -13,12 +14,26 @@
     </NavigationPage.TitleView>
     
     <ContentPage.Content>
-        <StackLayout Spacing="3" Padding="15">
-            <Label Text="Title" />
-            <Entry Text="{Binding Title, Mode=TwoWay}" FontSize="Medium" />
-            <Label Text="Description" />
-            <Editor Text="{Binding Description, Mode=TwoWay}" AutoSize="TextChanges" FontSize="Medium" Margin="0" />
-            <Button Text="Save" Command="{Binding SaveCommand}" HorizontalOptions="FillAndExpand" />
+        <StackLayout Spacing="3" Padding="15,4">
+            <Label Text="Title" Margin="0,0,0,-2" />
+            <Frame Style="{StaticResource EntryWrapper}">
+                <Entry Text="{Binding Title, Mode=TwoWay}" Placeholder="Title">
+                    <Entry.Effects>
+                        <effects:PlainEntry />
+                    </Entry.Effects>
+                </Entry>
+            </Frame>
+
+            <Label Text="Description" Margin="0,8,0,-2" />
+            <Frame Style="{StaticResource EntryWrapper}">
+                <Editor Text="{Binding Description, Mode=TwoWay}" Placeholder="Description" AutoSize="TextChanges">
+                    <Editor.Effects>
+                        <effects:PlainEntry />
+                    </Editor.Effects>
+                </Editor>
+            </Frame>
+            
+            <Button Text="Save" Command="{Binding SaveCommand}" HorizontalOptions="FillAndExpand" Margin="0,16,0,0"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
