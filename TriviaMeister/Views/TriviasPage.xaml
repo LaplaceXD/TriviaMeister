@@ -1,18 +1,19 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="TriviaMeister.Views.TriviasPage"
-             Title="{Binding PageTitle}"
              xmlns:local="clr-namespace:TriviaMeister.ViewModels"
              xmlns:model="clr-namespace:TriviaMeister.Models"
-             x:Name="BrowseItemsPage">
+             x:Class="TriviaMeister.Views.TriviasPage"
+             x:DataType="local:TriviasViewModel"
+             x:Name="BrowseTriviasPage"
+             Title="{Binding PageTitle}">
     
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Add" Command="{Binding AddTriviaCommand}" />
     </ContentPage.ToolbarItems>
 
-    <RefreshView x:DataType="local:TriviasViewModel" Command="{Binding LoadTriviasCommand}" IsRefreshing="{Binding IsBusy, Mode=TwoWay}">
-        <ListView x:Name="ItemsListView"
+    <RefreshView Command="{Binding LoadTriviasCommand}" IsRefreshing="{Binding IsBusy, Mode=TwoWay}">
+        <ListView x:Name="TriviasListView"
                 ItemsSource="{Binding Trivias}"
                 SelectionMode="None"
                 SeparatorVisibility="None"
