@@ -21,17 +21,17 @@
     </TabbedPage.Resources>
 
     <TabbedPage.Children>
-        <NavigationPage Title="Create">
+        <NavigationPage Title="Create" IconImageSource="icon_add.png">
             <x:Arguments>
                 <local:NewTriviaPage />
             </x:Arguments>
         </NavigationPage>
-        <NavigationPage Title="Browse" IconImageSource="icon_feed.png">
+        <NavigationPage Title="Browse" IconImageSource="icon_list.png">
             <x:Arguments>
                 <local:TriviasPage />
             </x:Arguments>
         </NavigationPage>
-        <NavigationPage Title="About" IconImageSource="icon_about.png">
+        <NavigationPage Title="About" IconImageSource="icon_user.png">
             <x:Arguments>
                 <local:AboutPage />
             </x:Arguments>
