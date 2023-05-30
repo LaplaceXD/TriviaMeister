@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:TriviaMeister.ViewModels"
+             xmlns:effects="clr-namespace:TriviaMeister.Effects"
+             x:Class="TriviaMeister.Views.RegisterPage"
+             x:DataType="local:RegisterViewModel"
+             NavigationPage.HasNavigationBar="False">
+    
+    <ContentPage.Content>
+        <StackLayout Padding="15,8" BackgroundColor="{StaticResource PrimaryColor}">
+            <Label Text="Register" Style="{StaticResource TitleLabel}" HorizontalOptions="Center" />
+
+            <StackLayout Orientation="Horizontal" Margin="0,8,0,-2">
+                <!-- First Name Entry -->
+                <StackLayout HorizontalOptions="FillAndExpand">
+                    <Label Text="First Name" />
+                    <Frame Style="{StaticResource EntryWrapper}">
+                        <Entry Text="{Binding FirstName, Mode=TwoWay}" Placeholder="First Name">
+                            <Entry.Effects>
+                                <effects:PlainEntry />
+                            </Entry.Effects>
+                        </Entry>
+                    </Frame>
+                </StackLayout>
+
+                <!-- Last Name Entry -->
+                <StackLayout HorizontalOptions="FillAndExpand">
+                    <Label Text="Last Name" />
+                    <Frame Style="{StaticResource EntryWrapper}">
+                        <Entry Text="{Binding LastName, Mode=TwoWay}" Placeholder="Last Name">
+                            <Entry.Effects>
+                                <effects:PlainEntry />
+                            </Entry.Effects>
+                        </Entry>
+                    </Frame>
+                </StackLayout>
+            </StackLayout>
+
+            <!-- Email Entry -->
+            <Label Text="Email" Margin="0,0,0,-2" />
+            <Frame Style="{StaticResource EntryWrapper}">
+                <Entry Text="{Binding Email, Mode=TwoWay}" Placeholder="Email">
+                    <Entry.Effects>
+                        <effects:PlainEntry />
+                    </Entry.Effects>
+                </Entry>
+            </Frame>
+
+            <!-- Password Entry -->
+            <Label Text="Password" Margin="0,0,0,-2" />
+            <Frame Style="{StaticResource EntryWrapper}">
+                <Entry Text="{Binding Password, Mode=TwoWay}" Placeholder="Password" IsPassword="True">
+                    <Entry.Effects>
+                        <effects:PlainEntry />
+                    </Entry.Effects>
+                </Entry>
+            </Frame>
+
+            <Label Text="Confirm Password" Margin="0,0,0,-2" />
+            <Frame Style="{StaticResource EntryWrapper}">
+                <Entry Text="{Binding ConfirmPassword, Mode=TwoWay}" Placeholder="Confirm Password" IsPassword="True">
+                    <Entry.Effects>
+                        <effects:PlainEntry />
+                    </Entry.Effects>
+                </Entry>
+            </Frame>
+
+            <Button VerticalOptions="Center" Text="Register" Command="{Binding RegisterCommand}" Margin="0,8,0,0"/>
+
+            <StackLayout Orientation="Vertical" VerticalOptions="EndAndExpand">
+                <Label Text="Already have an account?" />
+                <Button Text="Login" Style="{StaticResource NeutralButton}" Command="{Binding LoginCommand}"></Button>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

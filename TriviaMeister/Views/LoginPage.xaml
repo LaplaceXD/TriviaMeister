@@ -33,7 +33,7 @@
 
             <StackLayout Orientation="Vertical" VerticalOptions="EndAndExpand">
                 <Label Text="Do not have an account?" />
-                <Button Text="Register" Style="{StaticResource NeutralButton}"></Button>
+                <Button Text="Register" Style="{StaticResource NeutralButton}" Command="{Binding RegisterCommand}"></Button>
             </StackLayout>
         </StackLayout>
     </ContentPage.Content>
