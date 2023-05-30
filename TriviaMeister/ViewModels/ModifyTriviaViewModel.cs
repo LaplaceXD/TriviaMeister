@@ -91,6 +91,7 @@ namespace TriviaMeister.ViewModels
                 });
 
                 RefreshParent?.Invoke();
+                await MessageService.ShowAsync("Trivia Updated", $"{Title} updated successfully.", "Confirm");
                 await Navigation?.PopAsync();
             } 
             else
@@ -102,6 +103,7 @@ namespace TriviaMeister.ViewModels
                     Items = Items.ToList()
                 });
 
+                await MessageService.ShowAsync("Trivia Created", $"{Title} added successfully.", "Confirm");
                 Reset();
             }
         }

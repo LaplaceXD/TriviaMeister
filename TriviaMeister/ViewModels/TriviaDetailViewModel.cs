@@ -97,10 +97,15 @@ namespace TriviaMeister.ViewModels
 
         private async void OnDelete()
         {
-            // Add Delete Page using Modal?
-            await TriviaStore.DeleteItemAsync(Id);
-            
-            await Navigation.PopAsync();
+            var result = await MessageService.PromptAsync("Delete Trivia", $"Are you sure you want to delete {Title}?", "Yes", "No");
+
+            if (result)
+            {
+                await TriviaStore.DeleteItemAsync(Id);
+
+                await MessageService.ShowAsync("Trivia Deleted", $"{Title} deleted successfully.", "Confirm");
+                await Navigation.PopAsync();
+            }
         }
     }
 }
