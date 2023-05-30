@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using TriviaMeister.Views;
+﻿using TriviaMeister.Views;
 using Xamarin.Forms;
 
 namespace TriviaMeister.ViewModels
@@ -50,8 +47,7 @@ namespace TriviaMeister.ViewModels
                 return;
             }
 
-            // Fix this code to push to a new stack, instead of using the current navigation stack
-            await Navigation.PushAsync(new AboutPage());
+            App.Current.MainPage = new MainPage();
         }
     }
 }

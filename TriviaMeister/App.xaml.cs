@@ -1,14 +1,17 @@
 ﻿using TriviaMeister.Services;
+using TriviaMeister.Views;
 using Xamarin.Forms;
 
 namespace TriviaMeister
 {
     public partial class App : Application
     {
+        readonly AuthService _authService;
+
         public App()
         {
             InitializeComponent();
-            var authService = new AuthService();
+            _authService = new AuthService();
             var messageService = new MessageService();
             var userStore = new UserStore();
             var triviaStore = new TriviaStore();
@@ -16,9 +19,21 @@ namespace TriviaMeister
             DependencyService.RegisterSingleton(messageService);
             DependencyService.RegisterSingleton(userStore);
             DependencyService.RegisterSingleton(triviaStore);
-            DependencyService.RegisterSingleton(authService);
+            DependencyService.RegisterSingleton(_authService);
+        }
 
-            MainPage = new MainPage();
+        protected override async void OnStart()
+        {
+            var user = await _authService.GetUser();
+
+            if (user != null)
+            {
+                MainPage = new MainPage();
+            }
+            else
+            {
+                MainPage = new NavigationPage(new LoginPage());
+            }
         }
     }
 }
