@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TriviaMeister.Views.AccountPage"
+             xmlns:local="clr-namespace:TriviaMeister.ViewModels"
+             x:DataType="local:AccountViewModel"
+             Title="{Binding PageTitle}">
+
+    <NavigationPage.TitleView>
+        <StackLayout>
+            <Label Text="{Binding PageTitle}" FontSize="32" Style="{StaticResource TitleLabel}" />
+        </StackLayout>
+    </NavigationPage.TitleView>
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="Fill">
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center">
+                <ContentView Padding="0,12,0,0" VerticalOptions="FillAndExpand">
+                    <Image Source="image_placeholder.png" VerticalOptions="Center" HeightRequest="156" />
+                </ContentView>
+            </StackLayout>
+        </StackLayout>
+        <StackLayout Grid.Row="1" Orientation="Vertical" Padding="15,8" Spacing="0">
+            <Label Text="Good Day!" HorizontalOptions="Center" />
+            <Label Text="{Binding Name}" Style="{StaticResource TitleLabel}" FontSize="52" HorizontalOptions="Center" Margin="0,-8,0,0"/>
+
+            <Button Text="Sign Out"
+                    VerticalOptions="EndAndExpand"
+                    Command="{Binding SignOut}" />
+        </StackLayout>
+    </Grid>
+
+</ContentPage>

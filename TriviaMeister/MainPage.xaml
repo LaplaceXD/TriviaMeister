@@ -31,9 +31,9 @@
                 <local:TriviasPage />
             </x:Arguments>
         </NavigationPage>
-        <NavigationPage Title="About" IconImageSource="icon_user.png">
+        <NavigationPage Title="Account" IconImageSource="icon_user.png">
             <x:Arguments>
-                <local:AboutPage />
+                <local:AccountPage />
             </x:Arguments>
         </NavigationPage>
     </TabbedPage.Children>
