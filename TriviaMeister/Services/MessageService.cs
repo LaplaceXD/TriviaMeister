@@ -8,5 +8,10 @@ namespace TriviaMeister.Services
         {
             await App.Current.MainPage.DisplayAlert(title, message, cancel);
         }
+
+        public async Task<bool> PromptAsync(string title, string message, string accept, string cancel)
+        {
+            return await App.Current.MainPage.DisplayAlert(title, message, accept, cancel);
+        }
     }
 }
