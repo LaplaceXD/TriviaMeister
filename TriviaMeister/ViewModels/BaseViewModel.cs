@@ -11,7 +11,9 @@ namespace TriviaMeister.ViewModels
     public class BaseViewModel : INotifyPropertyChanged
     {
         public IDataStore<Trivia> TriviaStore => DependencyService.Get<IDataStore<Trivia>>();
+        public IDataStore<User> UserStore => DependencyService.Get<IDataStore<User>>();
         public IMessageService MessageService => DependencyService.Get<IMessageService>();
+        public IAuthService AuthService => DependencyService.Get<IAuthService>();
 
         private bool _isBusy = false;
         public bool IsBusy
