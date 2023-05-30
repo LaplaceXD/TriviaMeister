@@ -91,7 +91,6 @@ namespace TriviaMeister.ViewModels
                     Id = item.Id,
                     Prompt = item.Prompt,
                     Answer = item.Answer,
-                    CaseSensitive = item.CaseSensitive,
                     Navigation = Navigation,
                     IsEditing = true
                 }

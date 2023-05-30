@@ -9,7 +9,6 @@ namespace TriviaMeister.ViewModels
     {
         private string _prompt;
         private string _answer;
-        private bool _caseSensitive = false;
         private bool _isEditing = false;
 
         public string Id { get; set; }
@@ -24,12 +23,6 @@ namespace TriviaMeister.ViewModels
         {
             get => _answer;
             set => SetProperty(ref _answer, value);
-        }
-
-        public bool CaseSensitive
-        {
-            get => _caseSensitive;
-            set => SetProperty(ref _caseSensitive, value);
         }
 
         public bool IsEditing
@@ -86,8 +79,7 @@ namespace TriviaMeister.ViewModels
                 {
                     Id = Id,
                     Prompt = Prompt,
-                    Answer = Answer,
-                    CaseSensitive = CaseSensitive
+                    Answer = Answer
                 });
             } 
             else
@@ -95,8 +87,7 @@ namespace TriviaMeister.ViewModels
                 Items.Add(new TriviaItem()
                 {
                     Prompt = Prompt,
-                    Answer = Answer,
-                    CaseSensitive = CaseSensitive
+                    Answer = Answer
                 });
             }
 

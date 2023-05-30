@@ -56,7 +56,6 @@
                         Command="{Binding AddTriviaItemCommand}" />
             </StackLayout>
 
-            <!-- Convert this into a refresh view -->
             <ListView x:Name="ItemsListView" ItemsSource="{Binding Items}">
                 <ListView.ItemTemplate>
                     <DataTemplate>
@@ -77,18 +76,9 @@
                                                 </FormattedString>
                                             </Label.FormattedText>
                                         </Label>
-                                        <Label TextColor="{StaticResource PrimaryColor}">
-                                            <Label.FormattedText>
-                                                <FormattedString>
-                                                    <Span Text="Case-Sensitive: " FontAttributes="Bold" />
-                                                    <Span Text="{Binding CaseSensitive}" />
-                                                </FormattedString>
-                                            </Label.FormattedText>
-                                        </Label>
                                     </StackLayout>
                                 </StackLayout>
 
-                                <!-- Update to Trivia Question Detail -->
                                 <Frame.GestureRecognizers>
                                     <TapGestureRecognizer 
                                         NumberOfTapsRequired="1"

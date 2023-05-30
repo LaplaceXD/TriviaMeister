@@ -45,8 +45,7 @@ namespace TriviaMeister.Services
                         new TriviaItem
                         {
                             Prompt = "Who is the creator of Boolean Algebra?",
-                            Answer = "George Boole",
-                            CaseSensitive = true
+                            Answer = "George Boole"
                         }
                     }
                 },
