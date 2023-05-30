@@ -31,7 +31,7 @@ namespace TriviaMeister.ViewModels
         }
 
         public Command SaveCommand { get; }
-        public Command CancelCommand { get; }
+        public Command ClearCommand { get; }
         public Command AddTriviaItemCommand { get; }
 
         public NewTriviaViewModel()
@@ -39,6 +39,7 @@ namespace TriviaMeister.ViewModels
             PageTitle = "Create Trivia";
 
             SaveCommand = new Command(OnSave, ValidateSave);
+            ClearCommand = new Command(Reset);
             AddTriviaItemCommand = new Command(OnTrivaItemAdd);
             this.PropertyChanged += (_, __) => SaveCommand.ChangeCanExecute();
         }
@@ -53,7 +54,7 @@ namespace TriviaMeister.ViewModels
         {
             Title = string.Empty;
             Description = string.Empty;
-            Items = new ObservableCollection<TriviaItem>();
+            Items.Clear();
         }
 
         private async void OnSave()
