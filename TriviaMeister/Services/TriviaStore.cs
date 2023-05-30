@@ -90,9 +90,11 @@ namespace TriviaMeister.Services
             {
                 return await Task.FromResult(false);
             }
+
+            var index = _trivias.IndexOf(oldTrivia);
             
             _trivias.Remove(oldTrivia);
-            _trivias.Add(newTrivia);
+            _trivias.Insert(index, newTrivia);
 
             return await Task.FromResult(true);
         }
