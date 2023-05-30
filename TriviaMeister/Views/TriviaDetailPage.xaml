@@ -48,11 +48,10 @@
                                 <Label Text="{Binding Prompt}" FontSize="16" TextColor="{StaticResource PrimaryColor}" />
                             </StackLayout>
 
-                            <!-- Update to Trivia Question Detail -->
                             <Frame.GestureRecognizers>
                                 <TapGestureRecognizer 
                                         NumberOfTapsRequired="1"
-                                        Command="{Binding Source={RelativeSource AncestorType={x:Type local:TriviasViewModel}}, Path=TriviaTapped}"		
+                                        Command="{Binding Source={RelativeSource AncestorType={x:Type local:TriviaDetailViewModel}}, Path=TriviaItemTapped}"		
                                         CommandParameter="{Binding .}">
                                 </TapGestureRecognizer>
                             </Frame.GestureRecognizers>

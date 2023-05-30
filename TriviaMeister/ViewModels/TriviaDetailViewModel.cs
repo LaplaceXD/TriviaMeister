@@ -55,11 +55,13 @@ namespace TriviaMeister.ViewModels
 
         public Command DeleteCommand { get; }
         public Command EditCommand { get; }
+        public Command<TriviaItem> TriviaItemTapped { get; }
 
         public TriviaDetailViewModel()
         {
             DeleteCommand = new Command(OnDelete);
             EditCommand = new Command(OnEdit);
+            TriviaItemTapped = new Command<TriviaItem>(OnTriviaItemTapped);
         }
 
         public async void LoadTriviaById(string triviaId)
@@ -106,6 +108,11 @@ namespace TriviaMeister.ViewModels
                 await MessageService.ShowAsync("Trivia Deleted", $"{Title} deleted successfully.", "Confirm");
                 await Navigation.PopAsync();
             }
+        }
+
+        private async void OnTriviaItemTapped(TriviaItem item)
+        {
+            await MessageService.ShowAsync($"{item.Prompt}", $"{item.Answer}", "Got it!");
         }
     }
 }
