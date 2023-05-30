@@ -1,6 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.ObjectModel;
+using System.Linq;
 using TriviaMeister.Models;
+using TriviaMeister.Views;
 using Xamarin.Forms;
 
 namespace TriviaMeister.ViewModels
@@ -9,7 +10,7 @@ namespace TriviaMeister.ViewModels
     {
         private string _title;
         private string _description;
-        private List<TriviaItem> _items = new List<TriviaItem>();
+        private ObservableCollection<TriviaItem> _items = new ObservableCollection<TriviaItem>();
 
         public string Title
         {
@@ -23,7 +24,7 @@ namespace TriviaMeister.ViewModels
             set => SetProperty(ref _description, value);
         }
 
-        public List<TriviaItem> Items
+        public ObservableCollection<TriviaItem> Items
         {
             get => _items;
             set => SetProperty(ref _items, value);
@@ -31,12 +32,14 @@ namespace TriviaMeister.ViewModels
 
         public Command SaveCommand { get; }
         public Command CancelCommand { get; }
+        public Command AddTriviaItemCommand { get; }
 
         public NewTriviaViewModel()
         {
             PageTitle = "Create Trivia";
 
             SaveCommand = new Command(OnSave, ValidateSave);
+            AddTriviaItemCommand = new Command(OnTrivaItemAdd);
             this.PropertyChanged += (_, __) => SaveCommand.ChangeCanExecute();
         }
 
@@ -50,7 +53,7 @@ namespace TriviaMeister.ViewModels
         {
             Title = string.Empty;
             Description = string.Empty;
-            Items = new List<TriviaItem>();
+            Items = new ObservableCollection<TriviaItem>();
         }
 
         private async void OnSave()
@@ -59,10 +62,15 @@ namespace TriviaMeister.ViewModels
             {
                 Title = Title,
                 Description = Description,
-                Items = Items
+                Items = Items.ToList()
             });
 
             Reset();
+        }
+
+        private async void OnTrivaItemAdd()
+        {
+            await Navigation.PushAsync(new ModifyTriviaItemPage(_items));
         }
     }
 }

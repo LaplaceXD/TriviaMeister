@@ -12,7 +12,7 @@ namespace TriviaMeister.Views
             InitializeComponent();
             BindingContext = new NewTriviaViewModel() 
             {
-                Navigation = Navigation 
+                Navigation = Navigation
             };
         }
     }
