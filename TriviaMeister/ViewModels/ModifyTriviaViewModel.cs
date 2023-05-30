@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.ObjectModel;
 using System.Linq;
 using TriviaMeister.Models;
 using TriviaMeister.Views;
@@ -6,11 +7,19 @@ using Xamarin.Forms;
 
 namespace TriviaMeister.ViewModels
 {
-    public class NewTriviaViewModel : BaseViewModel
+    public class ModifyTriviaViewModel : BaseViewModel
     {
+        private string _id;
         private string _title;
         private string _description;
         private ObservableCollection<TriviaItem> _items = new ObservableCollection<TriviaItem>();
+        private bool _isEditing = false;
+
+        public string Id
+        {
+            get => _id;
+            set => SetProperty(ref _id, value);
+        }
 
         public string Title
         {
@@ -30,15 +39,25 @@ namespace TriviaMeister.ViewModels
             set => SetProperty(ref _items, value);
         }
 
+        public bool IsEditing
+        {
+            get => _isEditing;
+            set => _isEditing = value;
+        }
+
+        public bool IsCreating
+        {
+            get => !_isEditing;
+        }
+
         public Command SaveCommand { get; }
         public Command ClearCommand { get; }
         public Command AddTriviaItemCommand { get; }
         public Command<TriviaItem> TriviaItemSelected { get; }
+        public Action RefreshParent { get; set; }
 
-        public NewTriviaViewModel()
+        public ModifyTriviaViewModel()
         {
-            PageTitle = "Create Trivia";
-
             SaveCommand = new Command(OnSave, ValidateSave);
             ClearCommand = new Command(Reset);
             AddTriviaItemCommand = new Command(OnTrivaItemAdd);
@@ -61,14 +80,30 @@ namespace TriviaMeister.ViewModels
 
         private async void OnSave()
         {
-            await TriviaStore.AddItemAsync(new Trivia()
+            if(IsEditing)
             {
-                Title = Title,
-                Description = Description,
-                Items = Items.ToList()
-            });
+                await TriviaStore.UpdateItemAsync(new Trivia()
+                {
+                    Id = Id,
+                    Title = Title,
+                    Description = Description,
+                    Items = Items.ToList()
+                });
 
-            Reset();
+                RefreshParent?.Invoke();
+                await Navigation?.PopAsync();
+            } 
+            else
+            {
+                await TriviaStore.AddItemAsync(new Trivia()
+                {
+                    Title = Title,
+                    Description = Description,
+                    Items = Items.ToList()
+                });
+
+                Reset();
+            }
         }
 
         private async void OnTrivaItemAdd()

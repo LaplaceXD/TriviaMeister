@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Diagnostics;
 using TriviaMeister.Models;
+using TriviaMeister.Views;
 using Xamarin.Forms;
 
 namespace TriviaMeister.ViewModels
@@ -78,11 +80,24 @@ namespace TriviaMeister.ViewModels
 
         private async void OnEdit()
         {
-
+            await Navigation.PushAsync(new ModifyTriviaPage()
+            {
+                BindingContext = new ModifyTriviaViewModel()
+                {
+                    Id = Id,
+                    Title = Title,
+                    Description = Description,
+                    Items = new ObservableCollection<TriviaItem>(Items),
+                    IsEditing = true,
+                    Navigation = Navigation,
+                    RefreshParent = () => LoadTriviaById(Id)
+                }
+            });
         }
 
         private async void OnDelete()
         {
+            // Add Delete Page using Modal?
             await TriviaStore.DeleteItemAsync(Id);
             
             await Navigation.PopAsync();

@@ -1,4 +1,5 @@
 ﻿using Xamarin.Forms;
+using TriviaMeister.ViewModels;
 
 namespace TriviaMeister
 {
@@ -8,9 +9,15 @@ namespace TriviaMeister
         {
             InitializeComponent();
             var pages = Children.GetEnumerator();
-            pages.MoveNext(); // First page
-            pages.MoveNext(); // Second page
-            CurrentPage = pages.Current;
+            pages.MoveNext(); // ModifyTriviaItemPage
+            pages.Current.BindingContext = new ModifyTriviaViewModel()
+            {
+                PageTitle = "Create Trivia",
+                Navigation = pages.Current.Navigation
+            };
+
+            pages.MoveNext(); // TriviasPage
+            CurrentPage = pages.Current; // Set it as the main page
         }
     }
 }

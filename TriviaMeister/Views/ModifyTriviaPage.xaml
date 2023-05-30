@@ -4,8 +4,8 @@
              xmlns:effects="clr-namespace:TriviaMeister.Effects"
              xmlns:local="clr-namespace:TriviaMeister.ViewModels"
              xmlns:model="clr-namespace:TriviaMeister.Models"
-             x:Class="TriviaMeister.Views.NewTriviaPage"
-             x:DataType="local:NewTriviaViewModel"
+             x:Class="TriviaMeister.Views.ModifyTriviaPage"
+             x:DataType="local:ModifyTriviaViewModel"
              Title="{Binding PageTitle}">
     
     <NavigationPage.TitleView>
@@ -82,7 +82,7 @@
                                 <Frame.GestureRecognizers>
                                     <TapGestureRecognizer 
                                         NumberOfTapsRequired="1"
-                                        Command="{Binding Source={RelativeSource AncestorType={x:Type local:NewTriviaViewModel}}, Path=TriviaItemSelected}"		
+                                        Command="{Binding Source={RelativeSource AncestorType={x:Type local:ModifyTriviaViewModel}}, Path=TriviaItemSelected}"		
                                         CommandParameter="{Binding .}">
                                     </TapGestureRecognizer>
                                 </Frame.GestureRecognizers>
@@ -94,11 +94,12 @@
 
             <StackLayout Orientation="Horizontal" Margin="0,16,0,0">
                 <Button Text="Clear" Command="{Binding ClearCommand}"
-                    Style="{StaticResource NeutralButton}"
-                    HorizontalOptions="FillAndExpand" />
+                        Style="{StaticResource NeutralButton}"
+                        HorizontalOptions="FillAndExpand"
+                        IsVisible="{Binding IsCreating}" />
                 <Button Text="Save"
-                    Command="{Binding SaveCommand}"
-                    HorizontalOptions="FillAndExpand" />
+                        Command="{Binding SaveCommand}"
+                        HorizontalOptions="FillAndExpand" />
             </StackLayout>
         </StackLayout>
     </ContentPage.Content>
