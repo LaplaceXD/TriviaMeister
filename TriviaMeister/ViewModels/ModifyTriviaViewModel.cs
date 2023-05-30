@@ -110,19 +110,21 @@ namespace TriviaMeister.ViewModels
         {
             await Navigation.PushModalAsync(new ModifyTriviaItemPage()
             {
-                BindingContext = new ModifyTriviaItemViewModel(_items)
+                BindingContext = new ModifyTriviaItemViewModel()
                 {
+                    Items = Items,
                     Navigation = Navigation
                 }
-            });
+            });;
         }
 
         private async void OnTriviaItemSelected(TriviaItem item)
         {
             await Navigation.PushModalAsync(new ModifyTriviaItemPage()
             {
-                BindingContext = new ModifyTriviaItemViewModel(_items)
+                BindingContext = new ModifyTriviaItemViewModel()
                 {
+                    Items = Items,
                     Id = item.Id,
                     Prompt = item.Prompt,
                     Answer = item.Answer,

@@ -31,16 +31,15 @@ namespace TriviaMeister.ViewModels
             set => _isEditing = value;
         }
 
-        public ObservableCollection<TriviaItem> Items { get; }
+        public ObservableCollection<TriviaItem> Items { get; set; }
 
         public Command SaveCommand { get; }
         public Command CancelCommand { get; }
         public Command DeleteCommand { get; }
 
-        public ModifyTriviaItemViewModel(ObservableCollection<TriviaItem> items)
+        public ModifyTriviaItemViewModel()
         {
             PageTitle = "Create Trivia Item";
-            Items = items;
 
             CancelCommand = new Command(OnCancel);
             SaveCommand = new Command(OnSave, ValidateSave);
