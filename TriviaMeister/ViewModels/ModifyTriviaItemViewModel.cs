@@ -52,7 +52,7 @@ namespace TriviaMeister.ViewModels
 
         private async void OnCancel()
         {
-            await Navigation.PopAsync();
+            await Navigation.PopModalAsync();
         }
 
         private async void OnSave()
@@ -64,7 +64,7 @@ namespace TriviaMeister.ViewModels
                 CaseSensitive = CaseSensitive
             });
 
-            await Navigation.PopAsync();
+            await Navigation.PopModalAsync();
         }
     }
 }

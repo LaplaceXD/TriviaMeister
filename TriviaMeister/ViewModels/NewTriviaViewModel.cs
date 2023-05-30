@@ -71,7 +71,7 @@ namespace TriviaMeister.ViewModels
 
         private async void OnTrivaItemAdd()
         {
-            await Navigation.PushAsync(new ModifyTriviaItemPage(_items));
+            await Navigation.PushModalAsync(new ModifyTriviaItemPage(_items));
         }
     }
 }
