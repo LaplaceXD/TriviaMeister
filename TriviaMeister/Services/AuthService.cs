@@ -8,7 +8,6 @@ namespace TriviaMeister.Services
     public class AuthService : IAuthService
     {
         private IDataStore<User> UserStore => DependencyService.Get<IDataStore<User>>();
-        private IMessageService MessageService => DependencyService.Get<IMessageService>();
         private User _auth;
 
         public async Task<User> GetUser()
@@ -32,12 +31,7 @@ namespace TriviaMeister.Services
 
                 if (user != default(User) && user.Password == password)
                 {
-                    _auth = user;
                     return await Task.FromResult(true);
-                }
-                else
-                {
-                    await MessageService.ShowAsync("Login Error", "Invalid credentials.", "Ok");
                 }
             }
            
