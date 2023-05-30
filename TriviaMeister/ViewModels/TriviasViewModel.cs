@@ -69,7 +69,14 @@ namespace TriviaMeister.ViewModels
             
             await Navigation.PushAsync(new TriviaDetailPage()
             {
-                TriviaId = trivia.Id
+                BindingContext = new TriviaDetailViewModel()
+                {
+                    Id = trivia.Id,
+                    Title = trivia.Title,
+                    Description = trivia.Description,
+                    Items = trivia.Items,
+                    Navigation = Navigation
+                }
             });
         }
     }

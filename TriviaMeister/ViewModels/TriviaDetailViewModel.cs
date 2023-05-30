@@ -51,11 +51,19 @@ namespace TriviaMeister.ViewModels
             }
         }
 
+        public Command DeleteCommand { get; }
+        public Command EditCommand { get; }
+
+        public TriviaDetailViewModel()
+        {
+            DeleteCommand = new Command(OnDelete);
+            EditCommand = new Command(OnEdit);
+        }
+
         public async void LoadTriviaById(string triviaId)
         {
             try
             {
-                Debug.WriteLine(triviaId);
                 var trivia = await TriviaStore.GetItemAsync(triviaId);
                 Id = trivia.Id;
                 Title = trivia.Title;
@@ -66,6 +74,18 @@ namespace TriviaMeister.ViewModels
             {
                 Debug.WriteLine("Failed to Load Trivia");
             }
+        }
+
+        private async void OnEdit()
+        {
+
+        }
+
+        private async void OnDelete()
+        {
+            await TriviaStore.DeleteItemAsync(Id);
+            
+            await Navigation.PopAsync();
         }
     }
 }
