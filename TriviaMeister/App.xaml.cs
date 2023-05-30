@@ -8,10 +8,16 @@ namespace TriviaMeister
         public App()
         {
             InitializeComponent();
+            var authService = new AuthService();
+            var messageService = new MessageService();
+            var userStore = new UserStore();
+            var triviaStore = new TriviaStore();
 
-            DependencyService.Register<MessageService>();
-            DependencyService.Register<UserStore>();
-            DependencyService.Register<TriviaStore>();
+            DependencyService.RegisterSingleton(messageService);
+            DependencyService.RegisterSingleton(userStore);
+            DependencyService.RegisterSingleton(triviaStore);
+            DependencyService.RegisterSingleton(authService);
+
             MainPage = new MainPage();
         }
     }
