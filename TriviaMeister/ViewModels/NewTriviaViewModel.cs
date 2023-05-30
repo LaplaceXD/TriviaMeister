@@ -33,6 +33,7 @@ namespace TriviaMeister.ViewModels
         public Command SaveCommand { get; }
         public Command ClearCommand { get; }
         public Command AddTriviaItemCommand { get; }
+        public Command<TriviaItem> TriviaItemSelected { get; }
 
         public NewTriviaViewModel()
         {
@@ -41,6 +42,7 @@ namespace TriviaMeister.ViewModels
             SaveCommand = new Command(OnSave, ValidateSave);
             ClearCommand = new Command(Reset);
             AddTriviaItemCommand = new Command(OnTrivaItemAdd);
+            TriviaItemSelected = new Command<TriviaItem>(OnTriviaItemSelected);
             this.PropertyChanged += (_, __) => SaveCommand.ChangeCanExecute();
         }
 
@@ -71,7 +73,29 @@ namespace TriviaMeister.ViewModels
 
         private async void OnTrivaItemAdd()
         {
-            await Navigation.PushModalAsync(new ModifyTriviaItemPage(_items));
+            await Navigation.PushModalAsync(new ModifyTriviaItemPage()
+            {
+                BindingContext = new ModifyTriviaItemViewModel(_items)
+                {
+                    Navigation = Navigation
+                }
+            });
+        }
+
+        private async void OnTriviaItemSelected(TriviaItem item)
+        {
+            await Navigation.PushModalAsync(new ModifyTriviaItemPage()
+            {
+                BindingContext = new ModifyTriviaItemViewModel(_items)
+                {
+                    Id = item.Id,
+                    Prompt = item.Prompt,
+                    Answer = item.Answer,
+                    CaseSensitive = item.CaseSensitive,
+                    Navigation = Navigation,
+                    IsEditing = true
+                }
+            });
         }
     }
 }

@@ -10,13 +10,9 @@ namespace TriviaMeister.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class ModifyTriviaItemPage : ContentPage
 	{
-		public ModifyTriviaItemPage(ObservableCollection<TriviaItem> items)
+		public ModifyTriviaItemPage()
 		{
 			InitializeComponent();
-			BindingContext = new ModifyTriviaItemViewModel(items)
-			{
-				Navigation = Navigation
-			};
 		}
 	}
 }

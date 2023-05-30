@@ -1,5 +1,5 @@
-﻿using System;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
+using System.Linq;
 using TriviaMeister.Models;
 using Xamarin.Forms;
 
@@ -10,6 +10,9 @@ namespace TriviaMeister.ViewModels
         private string _prompt;
         private string _answer;
         private bool _caseSensitive = false;
+        private bool _isEditing = false;
+
+        public string Id { get; set; }
 
         public string Prompt
         {
@@ -27,6 +30,12 @@ namespace TriviaMeister.ViewModels
         {
             get => _caseSensitive;
             set => SetProperty(ref _caseSensitive, value);
+        }
+
+        public bool IsEditing
+        {
+            get => _isEditing;
+            set => _isEditing = value;
         }
 
         public ObservableCollection<TriviaItem> Items { get; }
@@ -57,12 +66,29 @@ namespace TriviaMeister.ViewModels
 
         private async void OnSave()
         {
-            Items.Add(new TriviaItem()
+            if(IsEditing)
             {
-                Prompt = Prompt,
-                Answer = Answer,
-                CaseSensitive = CaseSensitive
-            });
+                var item = Items.Where((TriviaItem t) => t.Id == Id).First();
+                var index = Items.IndexOf(item);
+
+                Items.Remove(item);
+                Items.Insert(index, new TriviaItem()
+                {
+                    Id = Id,
+                    Prompt = Prompt,
+                    Answer = Answer,
+                    CaseSensitive = CaseSensitive
+                });
+            } 
+            else
+            {
+                Items.Add(new TriviaItem()
+                {
+                    Prompt = Prompt,
+                    Answer = Answer,
+                    CaseSensitive = CaseSensitive
+                });
+            }
 
             await Navigation.PopModalAsync();
         }
