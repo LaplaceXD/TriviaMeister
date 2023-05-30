@@ -35,7 +35,7 @@
                           VerticalOptions="Center" />
             </StackLayout>
 
-            <StackLayout Orientation="Horizontal" Margin="0,16,0,0">
+            <StackLayout Orientation="Horizontal" Margin="0,16,0,0" Spacing="4">
                 <Button Text="Cancel" Command="{Binding CancelCommand}"
                         Style="{StaticResource NeutralButton}"
                         HorizontalOptions="FillAndExpand" />
@@ -43,6 +43,12 @@
                         Command="{Binding SaveCommand}"
                         HorizontalOptions="FillAndExpand" />
             </StackLayout>
+            <Button Text="Delete"
+                    Command="{Binding DeleteCommand}"
+                    HorizontalOptions="FillAndExpand"
+                    Margin="0,4,0,0"
+                    IsVisible="{Binding IsEditing}"
+                    Style="{StaticResource SecondaryButton}" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

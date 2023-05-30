@@ -42,6 +42,7 @@ namespace TriviaMeister.ViewModels
 
         public Command SaveCommand { get; }
         public Command CancelCommand { get; }
+        public Command DeleteCommand { get; }
 
         public ModifyTriviaItemViewModel(ObservableCollection<TriviaItem> items)
         {
@@ -50,6 +51,7 @@ namespace TriviaMeister.ViewModels
 
             CancelCommand = new Command(OnCancel);
             SaveCommand = new Command(OnSave, ValidateSave);
+            DeleteCommand = new Command(OnDelete);
             PropertyChanged += (_, __) => SaveCommand.ChangeCanExecute();
         }
 
@@ -61,6 +63,14 @@ namespace TriviaMeister.ViewModels
 
         private async void OnCancel()
         {
+            await Navigation.PopModalAsync();
+        }
+
+        private async void OnDelete()
+        {
+            var item = Items.Where((TriviaItem t) => t.Id == Id).First();
+            Items.Remove(item);
+
             await Navigation.PopModalAsync();
         }
 
