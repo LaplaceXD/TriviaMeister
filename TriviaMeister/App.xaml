@@ -1,10 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Application xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:converters="clr-namespace:TriviaMeister.Converters"
              x:Class="TriviaMeister.App">
 
     <Application.Resources>
         <ResourceDictionary>
+            <converters:IndexOfConverter x:Key="IndexOfConverter" />
+            
             <Color x:Key="PrimaryColor">#353D61</Color>
             <Color x:Key="SecondaryColor">#FF6855</Color>
             <Color x:Key="NeutralColor">#222530</Color>
