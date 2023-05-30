@@ -10,6 +10,7 @@ namespace TriviaMeister
             InitializeComponent();
 
             DependencyService.Register<MessageService>();
+            DependencyService.Register<UserStore>();
             DependencyService.Register<TriviaStore>();
             MainPage = new MainPage();
         }
